@@ -55,14 +55,18 @@ mapやeachなどをうまく使うと驚くほどシンプルに書けるかも�
 
 ##Problem(English)
 
-Write a program that generates [Amidakuji(Ghost Leg)](http://en.wikipedia.org/wiki/Amidakuji)
-The vertical lines is called 'legs'
-+   Make sure you can change the number of legs by commandline arguments.
-+   Set a label(A, B, C, ...) at the top of the leg.
-+   Choose one leg and put '*' at the bottom of the leg.
-+   Place horizontal lines randomely.
-+   You can't place a horizontal line next to another horizontal line.
-+   All of the legs should be connected to the adjacent legs.
+Write a program that generates [Amidakuji(Ghost Leg)](http://en.wikipedia.org/wiki/Amidakuji), 
+which is a method of lottery in Japan.
+
+It consists of vertical lines with horizontal lines connecting two adjacent vertical lines scattered randomly 
+along their length; the horizontal lines are called "legs". The number of vertical lines equals the number of people 
+playing, and one of the lines at the bottom has an item '*'. The specific program you'll write is as follows:
+
++   Given a number, it creates the same number of vertical lines.
++   Put a label (A, B, C, ...) at the top of the lines.
++   Randomly choose one line and put '*' at the bottom of the line.
++   Place horizontal lines randomely, but they cannot be one continuous line. Each of the line in the same level should be separated.
++   All of the vertical lines should be connected with one or more horizontal lines. They should not be separated.
 
 ##Example
 ```
