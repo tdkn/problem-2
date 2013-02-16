@@ -6,7 +6,7 @@
 +   A,B,C,D,E...とラベルをつける。
 +   当たり1つと横線の位置をランダムで配置する。
 +   横線が複数繋がっていてはいけません。
-+   すべての列が横棒で連結していること。
++   隣り合う縦線が必ず横線で連結していること。
 
 ##例
 ```
@@ -59,10 +59,10 @@ Write a program that generates [Amidakuji(Ghost Leg)](http://en.wikipedia.org/wi
 The vertical lines is called 'legs'
 +   Make sure you can change the number of legs by commandline arguments.
 +   Set a label(A, B, C, ...) at the top of the leg.
-+   Choose one leg and put a '*' at the bottom of the line
++   Choose one leg and put '*' at the bottom of the leg.
 +   Place horizontal lines randomely.
 +   You can't place a horizontal line next to another horizontal line.
-+   All of the legs should be connected to the adjacent legs
++   All of the legs should be connected to the adjacent legs.
 
 ##Example
 ```
