@@ -1,59 +1,72 @@
 # amida.rb
-# writen by @tdkn_
+# written by @tdkn_
 
-alpha = [*'A'..'Z']
-pnum = 5
-height = 7
+class Amida
+  def initialize(player_num, height)
+    @player_num = player_num
+    @height = height
+  end
 
-label = ""
-pnum.times do |i|
-  label << alpha[i]
-  label << "   "
-end
-p label
+  attr_accessor :player_num, :height
 
-height.times do |i|
-  line = ""
-  x1 = {"prev" => 0, "now" => 0}
-  pnum.times do |j|
-    x1["now"] = rand(2)
-    if x1["now"] == 0 && j != pnum-1 then
-      if x1["prev"] != 0 then
-        line << "|---"
-      else
-        line << "|   "
+  def print_label
+    @player_num.times do |i|
+      label = [*'A'..'Z'][i]
+      print "#{label}   "
+    end    
+    puts
+  end
+
+  def print_lines
+    @height.times do |i|
+      (@player_num-1).times do |j|
+        horizon = rand(2)
+        print horizon == 1 ? "|---" : "|   "
       end
-    else
-      line << "|   "
+      print "|   \n"
     end
-    x1["prev"] = x1["now"]
   end
-  p line
+
+  def print_goal
+    hit_num = rand(@player_num)
+    @player_num.times do |i|
+      print i == hit_num ? "*   " : "    "
+    end
+    puts
+  end
+
+  def show
+    print_label
+    print_lines
+    print_goal
+  end
 end
 
-hit_line = ""
-x2 = rand(pnum-1)
-pnum.times do |i|
-  if i == x2 then
-    hit_line << "*   "
-  else
-    hit_line << "    "
-  end
-end
-p hit_line
+player_num = (ARGV[0] || 5).to_i
+height = (ARGV[1] || 10).to_i
+amida = Amida.new(player_num, height)
+
+amida.show
 
 #
-# output
+# --- Output ---
 #
-# "A   B   C   D   E   "
-# "|   |   |   |   |   "
-# "|   |---|   |---|   "
-# "|   |   |---|   |   "
-# "|   |   |   |---|   "
-# "|   |   |   |   |   "
-# "|   |   |   |   |   "
-# "|   |   |   |   |   "
-# "        *           "
+# A   B   C   D   E   
+# |   |---|   |   |   
+# |   |   |---|   |   
+# |---|   |   |   |   
+# |   |   |   |---|   
+# |   |---|   |   |   
+# |---|---|   |---|   
+# |   |   |---|---|   
+# |---|---|---|   |   
+# |   |---|---|   |   
+# |   |---|---|---|   
+#     *               
 #
 # 駄目じゃん
+#
+# TODO:
+# [ ] 隣合う縦線が複数繋がらないように（NG: |---|---|---|, OK: |---|   |---）
+# [ ] 孤立してる縦線が存在しないように（隣合う縦線が必ず連結していること）
 #
